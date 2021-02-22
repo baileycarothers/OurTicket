@@ -1,5 +1,5 @@
 # OurTicket
-Community-driven issue tracking system
+**Communi**ty-driven issue tracking system
 
 ## Main Features
 
