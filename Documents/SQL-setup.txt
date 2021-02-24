@@ -1,0 +1,55 @@
+Create new database, OurTicket.
+CREATE DATABASE OurTicket;
+
+Create new user. For the sake of security, the password is ommitted.
+CREATE USER 'ussr'@'localhost' IDENTIFIED BY '<pass>';
+
+Grant privileges to user for the OurTicket database.
+GRANT ALL PRIVILEGES ON OurTicket.* TO 'ussr'@'localhost';
+
+Log out of root and into new user.
+
+Begin using the database.
+USE OurTicket;
+
+Create table for log in information with columns username, password hashes, and privilege level.
+CREATE TABLE login (
+    username VARCHAR(16) CHARACTER SET utf8,
+    passhash VARCHAR(16) CHARACTER SET utf8,
+    priv     TINYINT     UNSIGNED
+);
+
+Insert user for testing purposes. Note, the smaller the value of privilege, the more privileges granted.
+INSERT INTO login VALUES ("cole", "hash", 0);
+
+Create table for the submitted tickets with columns priority, name, votes, category, and description.
+CREATE TABLE ticket (
+    priority    TINYINT      UNSIGNED,
+    votes       INT          UNSIGNED,
+    name        VARCHAR(16)  CHARACTER SET utf8,
+    category    VARCHAR(64)  CHARACTER SET utf8,
+    description VARCHAR(512) CHARACTER SET utf8
+);
+
+To demonstrate the creation of these tables, we may run the following SQL "SHOW" statements:
+SHOW COLUMNS FROM login;
+
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| username | varchar(16) | YES  |     | NULL    |       |
+| passhash | varchar(16) | YES  |     | NULL    |       |
+| priv     | tinyint(4)  | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+
+SHOW COLUMNS FROM ticket;
+
++-------------+---------------------+------+-----+---------+-------+
+| Field       | Type                | Null | Key | Default | Extra |
++-------------+---------------------+------+-----+---------+-------+
+| priority    | tinyint(3) unsigned | YES  |     | NULL    |       |
+| votes       | int(10) unsigned    | YES  |     | NULL    |       |
+| name        | varchar(16)         | YES  |     | NULL    |       |
+| category    | varchar(64)         | YES  |     | NULL    |       |
+| description | varchar(512)        | YES  |     | NULL    |       |
++-------------+---------------------+------+-----+---------+-------+
