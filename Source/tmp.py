@@ -1,7 +1,10 @@
-arr = [1, 2, 3]
+from dbacc import db_ticket
 
-for a in arr:
-    print(a)
-    arr = [4, 5, 6]
 
-print(arr)
+tickets = db_ticket("OurTicket")
+# tickets.add_ticket(1, 5, "Shaders.", "VISUAL", "We should consider implementing shaders because they are cool.")
+print(tickets.get_ticket(7))
+tickets.upvote_ticket(7)
+print(tickets.get_ticket(7))
+tickets.update_priority()
+print(tickets.get_ticket(7))
