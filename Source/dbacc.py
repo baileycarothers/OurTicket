@@ -1,4 +1,3 @@
-
 import mariadb
 
 
@@ -14,14 +13,14 @@ class db_table:
                 database = db
             )
         except mariadb.Error as e:
-            print(f"Error connecting to {db}: {e}")
+            print(f"Error connecting to database: {e}")
             sys.exit(1)
 
         # Get Cursor to Database
         try:
             self.cursor = self.connection.cursor()
         except mariadb.Error as e:
-            print(f"Error connecting to {db}: {e}")
+            print(f"Error connecting to database: {e}")
             sys.exit(1)
 
     def disconnect(self):
@@ -41,7 +40,7 @@ class db_login(db_table):
             else:
                 return user
         except mariadb.Error as e:
-            print(f"Error connecting to {db}: {e}")
+            print(f"Error connecting to database: {e}")
             sys.exit(1)
 
     def add_user(self, name, passh, priv):
@@ -50,7 +49,7 @@ class db_login(db_table):
             self.connection.commit()
             return True
         except mariadb.Error as e:
-            print(f"Error connecting to {db}: {e}")
+            print(f"Error connecting to database: {e}")
             sys.exit(1)
 
 
@@ -64,9 +63,9 @@ class db_ticket(db_table):
             if len(ticket) == 0:
                 return False
             else:
-                return ticket
+                return ticket[0]
         except mariadb.Error as e:
-            print(f"Error connecting to {db}: {e}")
+            print(f"Error connecting to database: {e}")
             sys.exit(1)
 
     def add_ticket(self, priority, votes, name, category, description):
@@ -75,12 +74,47 @@ class db_ticket(db_table):
             self.connection.commit()
             return True
         except mariadb.Error as e:
-            print(f"Error connecting to {db}: {e}")
+            print(f"Error connecting to database: {e}")
             sys.exit(1)
+
+    def del_ticket(self, tid):
+        try:
+            self.cursor.execute(f"DELETE FROM {self.table} WHERE tid = {tid};")
+            self.connection.commit()
+            return True
+        except mariadb.Error as e:
+            print(f"Error connecting to database: {e}")
+            sys.exit(1)
+
+    def upvote_ticket(self, tid):
+        try:
+            self.cursor.execute(f"UPDATE {self.table} SET votes = votes + 1 WHERE tid = {tid};")
+            self.connection.commit()
+            return True
+        except mariadb.error as e:
+            print(f"Error connecting to database: {e}")
+            sys.exit(1)
+
+    def update_priority(self):
+        try:
+            self.cursor.execute(f"SELECT tid FROM ticket ORDER BY votes DESC;")
+            (*tids,) = self.cursor
+            priority = 0
+            for tid in tids:
+                tid = tid[0]
+                self.cursor.execute(f"UPDATE {self.table} SET priority = {priority} WHERE tid = {tid};")
+                priority += 1
+            self.connection.commit()
+        except mariadb.error as e:
+            print(f"Error connecting to database: {e}")
+            sys.exit(1)
+            
 
 logins = db_login("OurTicket")
 logins.add_user("test", "test", 1)
 tickets = db_ticket("OurTicket")
-tickets.add_ticket(1, 10, "Fix Tickets!", "TICKET", "The ticket system does not work properly and needs to be fixed.")
-print(tickets.get_ticket(1))
+#tickets.add_ticket(1, 10, "Fix Tickets!", "TICKET", "The ticket system does not work properly and needs to be fixed.") #print(tickets.get_ticket(5))
+#tickets.del_ticket(4)
+#tickets.upvote_ticket(5)
+tickets.update_priority()
 print("\nSucessfully disconnected.")
