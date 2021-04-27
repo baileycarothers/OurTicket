@@ -35,7 +35,7 @@ class db_table:
 class db_login(db_table):
     table = "login"
 
-    def get_user(self, uid):
+    def get_user_by_uid(self, uid):
         try:
             self.cursor.execute(f"SELECT * FROM {self.table} WHERE uid={uid};")
             (*user,) = self.cursor
@@ -46,6 +46,20 @@ class db_login(db_table):
         except mariadb.Error as e:
             print(f"Error connecting to database: {e}")
             sys.exit(1)
+
+    def get_uid_by_user_pass(self, username, password):
+        try:
+            self.cursor.execute(f"SELECT uid FROM {self.table} WHERE user=('{username}') AND pass=('{password}');")
+            (*user,) = self.cursor
+            if len(user) == 0:
+                return False
+            else:
+                return user
+        except mariadb.Error as e:
+            print(f"Error connecting to database: {e}")
+            sys.exit(1)
+
+
 
     def add_user(self, name, passh, priv):
         try:
