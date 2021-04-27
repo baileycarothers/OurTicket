@@ -8,7 +8,7 @@ class db_table:
         try:
             self.connection = mariadb.connect(
                 user = "ussr",
-                password = "pa55word",
+                password = "oursecurity",
                 host = "localhost",
                 port = 3306,
                 database = db
@@ -23,6 +23,9 @@ class db_table:
         except mariadb.Error as e:
             print(f"Error connecting to database: {e}")
             sys.exit(1)
+
+    def __del__(self):
+        self.disconnect()
 
     def disconnect(self):
         self.connection.close()
@@ -46,7 +49,18 @@ class db_login(db_table):
 
     def add_user(self, name, passh, priv):
         try:
-            self.cursor.execute(f"INSERT INTO {self.table} VALUES (0, '{name}', '{passh}', {priv});")
+            self.cursor.execute(f'''
+                INSERT INTO {self.table} (
+                    user,
+                    pass,
+                    priv
+                )
+                VALUES (
+                    '{name}', 
+                    '{passh}', 
+                    {priv}
+                );
+            ''')
             self.connection.commit()
             return True
         except mariadb.Error as e:
@@ -71,7 +85,22 @@ class db_ticket(db_table):
 
     def add_ticket(self, priority, votes, name, category, description):
         try:
-            self.cursor.execute(f"INSERT INTO {self.table} VALUES (0, {priority}, {votes}, '{name}', '{category}', '{description}');")
+            self.cursor.execute(f'''
+                INSERT INTO {self.table} (
+                    priority,
+                    votes,
+                    name,
+                    category,
+                    description
+                )
+                VALUES (
+                    {priority}, 
+                    {votes}, 
+                    '{name}', 
+                    '{category}', 
+                    '{description}'
+                );'''
+            )
             self.connection.commit()
             return True
         except mariadb.Error as e:
@@ -110,12 +139,3 @@ class db_ticket(db_table):
             print(f"Error connecting to database: {e}")
             sys.exit(1)
             
-
-logins = db_login("OurTicket")
-logins.add_user("test", "test", 1)
-tickets = db_ticket("OurTicket")
-#tickets.add_ticket(1, 10, "Fix Tickets!", "TICKET", "The ticket system does not work properly and needs to be fixed.") #print(tickets.get_ticket(5))
-#tickets.del_ticket(4)
-#tickets.upvote_ticket(5)
-tickets.update_priority()
-print("\nSucessfully disconnected.")
