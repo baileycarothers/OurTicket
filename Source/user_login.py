@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import sys, getopt
 from dbacc import db_login
@@ -21,10 +21,8 @@ def main(argv):
         else:
             print("login_util.py -u <username> -p <password>")
             sys.exit(2)
-    print(f"User: {username}")
-    print(f"Pass: {password}")
-    login = db_login()
-    uid = login.get_uid_by_user(username)
+    login = db_login("OurTicket")
+    uid = login.get_uid_by_user_pass(username, password)
     if uid == -1 and not f_register:        # need to register
         print("Incorrect username and password. Please register.")
         sys.exit(2)
@@ -38,7 +36,8 @@ def main(argv):
         print("Error encountered.")
         sys.exit(-1)
 
-    
+    #          uid,   uname,    priv
+    return user[0], user[1], user[3]
 
 
 if __name__ == "__main__":

@@ -42,7 +42,7 @@ class db_login(db_table):
             if len(user) == 0:
                 return False
             else:
-                return user
+                return user[0]
         except mariadb.Error as e:
             print(f"Error connecting to database: {e}")
             sys.exit(1)
@@ -50,11 +50,11 @@ class db_login(db_table):
     def get_uid_by_user_pass(self, username, password):
         try:
             self.cursor.execute(f"SELECT uid FROM {self.table} WHERE user=('{username}') AND pass=('{password}');")
-            (*user,) = self.cursor
-            if len(user) == 0:
-                return False
+            (*uid,) = self.cursor
+            if len(uid) == 0:
+                return -1
             else:
-                return user
+                return uid[0][0]
         except mariadb.Error as e:
             print(f"Error connecting to database: {e}")
             sys.exit(1)
