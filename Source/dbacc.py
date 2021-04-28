@@ -85,7 +85,7 @@ class db_login(db_table):
 class db_ticket(db_table):
     table = "ticket"
 
-    def get_ticket(self, tid):
+    def get_ticket_by_tid(self, tid):
         self.cursor.execute(f"SELECT * FROM {self.table} WHERE tid={tid};")
         (*ticket,) = self.cursor
         try:
@@ -93,6 +93,18 @@ class db_ticket(db_table):
                 return False
             else:
                 return ticket[0]
+        except mariadb.Error as e:
+            print(f"Error connecting to database: {e}")
+            sys.exit(1)
+
+    def get_tid_by_name(self, name):
+        self.cursor.execute(f"SELECT tid FROM {self.table} WHERE (name='{name}');")
+        (*ticket,) = self.cursor
+        try:
+            if len(ticket) == 0:
+                return False
+            else:
+                return ticket[0][0]
         except mariadb.Error as e:
             print(f"Error connecting to database: {e}")
             sys.exit(1)
@@ -110,9 +122,9 @@ class db_ticket(db_table):
                 VALUES (
                     {priority}, 
                     {votes}, 
-                    '{name}', 
-                    '{category}', 
-                    '{description}'
+                    "{name}", 
+                    "{category}", 
+                    "{description}"
                 );'''
             )
             self.connection.commit()

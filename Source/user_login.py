@@ -9,7 +9,7 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv, "ru:p:",["username=","password="])
     except getopt.GetoptError:
-        print("login_util.py -u <username> -p <password>")
+        print("user_login.py -u <username> -p <password>")
         sys.exit(2)
     for opt, arg in opts:
         if opt in ("-u", "--username"):
@@ -19,7 +19,7 @@ def main(argv):
         elif opt in ("-r", "--register"):
             f_register = True
         else:
-            print("login_util.py -u <username> -p <password>")
+            print("user_login.py -u <username> -p <password>")
             sys.exit(2)
     login = db_login("OurTicket")
     uid = login.get_uid_by_user_pass(username, password)
