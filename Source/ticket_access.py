@@ -16,7 +16,7 @@ def main(argv):
     ticket_description = ""
     priv = -1
     try:
-        opts, args = getopt.getopt(argv, "aefrvn:c:d:p:i:",["ticket_name=","ticket_category=","ticket_description="])
+        opts, args = getopt.getopt(argv, "azfrvn:c:d:p:i:",["ticket_name=","ticket_category=","ticket_description="])
     except getopt.GetoptError:
         print("ticket_access top [SWITCH] [OPTION]")
         sys.exit(2)
@@ -27,7 +27,7 @@ def main(argv):
             f_find = True
         elif opt in ("-i", "--tid"):
             f_tid = True
-        elif opt in ("-e", "--enum_all"):
+        elif opt in ("-z", "--znum_all"):
             f_all = True
         elif opt in ("-r", "--remove"):
             f_remove = True
