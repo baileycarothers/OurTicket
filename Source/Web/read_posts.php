@@ -31,16 +31,14 @@
         echo "Ticket Priority: ".$fields[4]."<br>";
         echo "Ticket Description: ".$fields[5]."<br><br>"; ?>
         <form action="voted.php" method="post">
-        	<input type="radio" name="upvote" class="button" value="upvote" />
-        	<input type="radio" name="upvote" class="button" value="close" />
+        	<input type="radio" name="upvote" class="button" value="upvote,<?php echo($fields[0]);?>" />
+        	<input type="radio" name="upvote" class="button" value="close,<?php echo($fields[0]);?>" />
         	<input type="submit" name="submit" class="button" value="submit" />
         </form> <?php
     }
     
     $upvote = $_POST['upvote'];
     $upvote_e = explode(",", $upvote);
-    $close = $_POST['close'];
-    $close_e = explode(",", $close);
     
     print($upvote_e[1]);
     print($upvote_e[0]);
