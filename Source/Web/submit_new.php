@@ -11,12 +11,6 @@
                 <option value="3">Other</option>
             </select>
   <br>
- <label for="priority">Select a Priority:</label>
-  Priority: <select id="priority" name="priority">
-                <option value="0">0 (highest)</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-            </select>
   <br>
   <label for="details">Details 2:</label>
   Details:  <textarea id="details" rows="5" cols="60" name="details"></textarea><br>
