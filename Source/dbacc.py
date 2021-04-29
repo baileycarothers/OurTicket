@@ -172,7 +172,7 @@ class db_ticket(db_table):
             if len(ticket) == 0:
                 return False
             else:
-                return ticket[0]
+                return ticket
         except mariadb.Error as e:
             print(f"Error connecting to database: {e}")
             sys.exit(1)

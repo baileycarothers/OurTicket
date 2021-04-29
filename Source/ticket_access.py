@@ -70,8 +70,9 @@ def main(argv):
             print(row)
     elif f_all:
         tick = ticket.get_all_tickets()
-        for row in tick:
-            print(row)
+        for t in tick:
+            for row in t:
+                print(row)
     elif f_remove:
         if priv == 0:
             tid = ticket.get_tid_by_name(ticket_name)
