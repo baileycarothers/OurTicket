@@ -31,8 +31,9 @@
         echo "Ticket Priority: ".$fields[4]."<br>";
         echo "Ticket Description: ".$fields[5]."<br><br>"; ?>
         <form action="voted.php" method="post">
-        	<input type="submit" name="upvote" class="button" value="upvote" />
-        	<input type="submit" name="close" class="button" value="close" />
+        	<input type="radio" name="upvote" class="button" value="upvote" />
+        	<input type="radio" name="close" class="button" value="close" />
+        	<input type="submit" name="submit" class="button" value="submit" />
         </form> <?php
     }
     
