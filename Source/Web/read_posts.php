@@ -8,15 +8,17 @@
     $all = shell_exec("./../ticket_access.py -z");
     $all_exp = explode("\n", $all);
     
+    $counter =0;
+    /*
     foreach($all_exp as $sure){
         echo $sure;
-    }
+    }*/
     
     
     //for loop for each ticket
     $ticket_count = 5;
     for($i = 0; $i < $ticket_count; $i++){
-        echo "Ticket No.<br>"; 
+        echo "Ticket No. " . $all_exp[$counter++] . "<br>"; 
         echo "Ticket Name:<br>";
         echo "Ticket Category:<br>";
         echo "Ticket Priority:<br>";
