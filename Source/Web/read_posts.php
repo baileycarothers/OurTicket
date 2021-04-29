@@ -5,11 +5,13 @@
     //Some command for getting the number of tickets from the python
     
     #b r u h
-    //$id = shell_exec("./../../ticket_access.py ");
+    $all = shell_exec("./../ticket_access.py -e");
+    
+    echo $all;
     
     
     //for loop for each ticket
-    $ticket_count = 10;
+    $ticket_count = 5;
     for($i = 0; $i < $ticket_count; $i++){
         echo "Ticket No.<br>"; 
         echo "Ticket Name:<br>";

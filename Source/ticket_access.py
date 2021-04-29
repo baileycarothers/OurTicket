@@ -10,12 +10,13 @@ def main(argv):
     f_tid = False
     f_remove = False
     f_vote = False
+    f_all = False
     ticket_name = ""
     ticket_category = ""
     ticket_description = ""
     priv = -1
     try:
-        opts, args = getopt.getopt(argv, "afrvn:c:d:p:i:",["ticket_name=","ticket_category=","ticket_description="])
+        opts, args = getopt.getopt(argv, "aefrvn:c:d:p:i:",["ticket_name=","ticket_category=","ticket_description="])
     except getopt.GetoptError:
         print("ticket_access [SWITCH] [OPTION]")
         sys.exit(2)
@@ -26,6 +27,8 @@ def main(argv):
             f_find = True
         elif opt in ("-i", "--tid"):
             f_tid = True
+        elif opt in ("-e", "--enum_all"):
+            f_all = True
         elif opt in ("-r", "--remove"):
             f_remove = True
         elif opt in ("-v", "--vote"):
@@ -61,6 +64,10 @@ def main(argv):
             sys.exit(0)
     elif f_find:    # no implementation
         tick = ticket.get_ticket_by_tid(f_tid)
+        for row in tick:
+            print(row)
+    elif f_all:
+        tick = ticket.get_all_tickets()
         for row in tick:
             print(row)
     elif f_remove:
