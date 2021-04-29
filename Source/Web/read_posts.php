@@ -16,6 +16,10 @@
         echo "Ticket Category:<br>";
         echo "Ticket Priority:<br>";
         echo "Ticket Description:<br><br>";
+        <form action="./../../ticket_access.py" method="post">
+        	<input type="submit" name="upvote" class="button" value="Upvote" />
+        	<input type="submit" name="close" class="button" value="Close" />
+        </form>
     }
     
     echo "Ticket No."; 
