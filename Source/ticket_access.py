@@ -10,13 +10,14 @@ def main(argv):
     f_tid = False
     f_remove = False
     f_vote = False
+    f_count = False
     f_all = False
     ticket_name = ""
     ticket_category = ""
     ticket_description = ""
     priv = -1
     try:
-        opts, args = getopt.getopt(argv, "azfrvn:c:d:p:i:",["ticket_name=","ticket_category=","ticket_description="])
+        opts, args = getopt.getopt(argv, "gazfrvn:c:d:p:i:",["ticket_name=","ticket_category=","ticket_description="])
     except getopt.GetoptError:
         print(argv)
         print("ticket_access top [SWITCH] [OPTION]")
@@ -32,6 +33,8 @@ def main(argv):
             f_all = True
         elif opt in ("-r", "--remove"):
             f_remove = True
+        elif opt in ("-g", "--get-count"):
+            f_count = True
         elif opt in ("-v", "--vote"):
             f_vote = True
         elif opt in ("-n", "--name"):
@@ -48,7 +51,7 @@ def main(argv):
             sys.exit(2)
 
     # Parse switches
-    if not f_add+f_find+f_remove+f_all== 1:
+    if not f_add+f_find+f_remove+f_all+f_count== 1:
         print("Incorrect amount of switches.")
         print("ticket_access [SWITCH] [OPTION]")
         sys.exit(2)
@@ -73,6 +76,8 @@ def main(argv):
         for t in tick:
             for row in t:
                 print(row)
+    elif f_count:
+        return ticket.get_ticket_count()
     elif f_remove:
         if priv == 0:
             tid = ticket.get_tid_by_name(ticket_name)

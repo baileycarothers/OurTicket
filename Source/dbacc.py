@@ -176,4 +176,11 @@ class db_ticket(db_table):
         except mariadb.Error as e:
             print(f"Error connecting to database: {e}")
             sys.exit(1)
-            
+    def get_ticket_count(self):
+        self.cursor.execute(f"SELECT * FROM {self.table};")
+        (*ticket,) = self.cursor
+        try:
+            return len(ticket)
+        except mariadb.Error as e:
+            print(f"Error connecting to database: {e}")
+            sys.exit(1)
