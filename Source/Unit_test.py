@@ -11,7 +11,7 @@ class TestAccessMethods(unittest.TestCase):
         tid = ticket.get_tid_by_name("1")
         result = ticket.get_ticket_by_tid(tid)
         print(result)
-        self.assertEqual(result, (tid, 0, 0, '1', '2', '3')))
+        self.assertEqual(result, (tid, 0, 0, '1', '2', '3'))
         
 if __name__ == '__main__':
     unittest.main()
