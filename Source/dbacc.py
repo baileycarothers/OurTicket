@@ -86,6 +86,7 @@ class db_ticket(db_table):
     table = "ticket"
 
     def get_ticket_by_tid(self, tid):
+        print(tid)
         self.cursor.execute(f"SELECT * FROM {self.table} WHERE tid={tid};")
         (*ticket,) = self.cursor
         try:
