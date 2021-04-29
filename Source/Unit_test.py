@@ -20,7 +20,9 @@ class TestAccessMethods(unittest.TestCase):
         tid = ticket.get_tid_by_name("1")
         ticket.upvote_ticket(tid)
         result = ticket.get_ticket_by_tid(tid)
+        ticket.del_ticket(tid)
         self.assertEqual(result, (tid, 0, 1, '1', '2', '3'))
+        
     
     # Successful Test #3
     def test_remove(self):
