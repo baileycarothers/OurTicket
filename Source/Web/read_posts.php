@@ -5,7 +5,7 @@
     //Some command for getting the number of tickets from the python
     
     #b r u h
-    $all = shell_exec("./../ticket_access.py -e");
+    $all = shell_exec("./../ticket_access.py -z");
     
     echo $all;
     
