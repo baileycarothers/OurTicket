@@ -4,6 +4,9 @@
     //echo "<h1>" . Big Nuts XD . "</h1>";
     //Some command for getting the number of tickets from the python
     
+    #b r u h
+    $id = shell_exec("./../../ticket_access.py ")
+    
     
     //for loop for each ticket
     $ticket_count = 10;
