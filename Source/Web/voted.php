@@ -6,7 +6,7 @@
     
     echo($upvote_e[1]);
     echo($upvote_e[0]);
-    echo($upvote);
+    echo(($upvote==NULL));
     print("doggi");
     
     if($upvote){
