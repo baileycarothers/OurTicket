@@ -77,7 +77,7 @@ def main(argv):
             for row in t:
                 print(row)
     elif f_count:
-        return ticket.get_ticket_count()
+        print(ticket.get_ticket_count())
     elif f_remove:
         if priv == 0:
             tid = ticket.get_tid_by_name(ticket_name)
