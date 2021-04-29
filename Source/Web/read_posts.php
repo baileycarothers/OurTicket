@@ -19,10 +19,10 @@
     $ticket_count = 5;
     for($i = 0; $i < $ticket_count; $i++){
         echo "Ticket No. " . $all_exp[$counter++] . "<br>"; 
-        echo "Ticket Name:<br>";
-        echo "Ticket Category:<br>";
-        echo "Ticket Priority:<br>";
-        echo "Ticket Description:<br><br>"; ?>
+        echo "Ticket Name:".$all_exp[$counter++]."<br>";
+        echo "Ticket Category:".$all_exp[$counter++]."<br>";
+        echo "Ticket Priority:".$all_exp[$counter++]."<br>";
+        echo "Ticket Description:".$all_exp[$counter++]."<br><br>"; ?>
         <form action="./../../ticket_access.py" method="post">
         	<input type="submit" name="upvote" class="button" value="Upvote" />
         	<input type="submit" name="close" class="button" value="Close" />
