@@ -73,6 +73,7 @@ def main(argv):
        # tick = ticket.get_ticket_by_tid(f_tid)
         #for row in tick:
          #   print(row)
+        print("testingtop")
         if(f_vote):
             print("testing")
             ticket.upvote_ticket(f_tid)
