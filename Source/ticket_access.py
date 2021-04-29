@@ -27,6 +27,8 @@ def main(argv):
             f_add = True
         elif opt in ("-f", "--find"):
             f_find = True
+            if opt in ("-v", "--vote"):
+                f_vote = True
         elif opt in ("-i", "--tid"):
             f_tid = True
         elif opt in ("-z", "--znum_all"):
