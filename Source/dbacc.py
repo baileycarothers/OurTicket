@@ -144,7 +144,7 @@ class db_ticket(db_table):
 
     def upvote_ticket(self, tid):
         try:
-            self.cursor.execute(f"UPDATE {self.table} SET votes = votes + 1 WHERE tid = {tid};")
+            self.cursor.execute(f"UPDATE OurTicket.{self.table} SET votes = votes + 1 WHERE tid = {tid};")
             self.connection.commit()
             return True
         except mariadb.error as e:

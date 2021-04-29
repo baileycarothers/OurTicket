@@ -10,7 +10,7 @@
     print("doggi");
     
     if($upvote){
-        $out = shell_exec("./../ticket_access.py -f ".$upvote_e[1]." -v 2>&1");
+        $out = shell_exec("./../ticket_access.py -v -f ".$upvote_e[1]."  2>&1");
         echo($out);
     }
 ?>
