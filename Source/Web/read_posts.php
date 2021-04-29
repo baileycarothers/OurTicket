@@ -40,14 +40,11 @@
     $upvote = $_POST['upvote'];
     $upvote_e = explode(",", $upvote);
     
-    print($upvote_e[1]);
-    print($upvote_e[0]);
-    
     if($upvote_e[0] == 'upvote'){
         $out = shell_exec("./../ticket_access.py -v -f -i".$upvote_e[1]." 2>&1");
-        echo($out . "pepe2");
+
     }elseif($upvote_e[0] == 'close'){
-        echo("pepe");
+        $out = shell_exec("./../ticket_access.py -r -p 0 -i".$upvote_e[1]." 2>&1");
     }
     
 ?>
