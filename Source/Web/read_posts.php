@@ -16,7 +16,7 @@
     
     
     //for loop for each ticket
-    $ticket_count = 5;
+    $ticket_count = shell_exec("./../ticket_access.py -g");
     for($i = 0; $i < $ticket_count; $i++){
         $fields = array();
         for($j = 0; $j < 6; $j++){
