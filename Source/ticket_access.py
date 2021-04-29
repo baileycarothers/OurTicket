@@ -48,7 +48,7 @@ def main(argv):
             sys.exit(2)
 
     # Parse switches
-    if not f_add+f_find+f_remove == 1:
+    if not f_add+f_find+f_remove+f_all== 1:
         print("Incorrect amount of switches.")
         print("ticket_access [SWITCH] [OPTION]")
         sys.exit(2)
