@@ -7,7 +7,7 @@ from dbacc import db_ticket
 def main(argv):
     f_add = False
     f_find = False
-    f_tid = -1;
+    f_tid = -1
     f_remove = False
     f_vote = False
     f_count = False
@@ -27,8 +27,6 @@ def main(argv):
             f_add = True
         elif opt in ("-f", "--find"):
             f_find = True
-            if opt in ("-v", "--vote"):
-                f_vote = True
         elif opt in ("-i", "--tid"):
             f_tid = arg
         elif opt in ("-z", "--znum_all"):
