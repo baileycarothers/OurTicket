@@ -2,7 +2,6 @@
 <body>
 <?php 
     echo "<h1>" Big Nuts XD "</h1>"
-
-
 ?>
-</form>
+</body>
+</html>
