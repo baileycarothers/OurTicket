@@ -68,9 +68,11 @@ def main(argv):
             print("Ticket added successfully!")
             sys.exit(0)
     elif f_find:    # no implementation
-        tick = ticket.get_ticket_by_tid(f_tid)
-        for row in tick:
-            print(row)
+       # tick = ticket.get_ticket_by_tid(f_tid)
+        #for row in tick:
+         #   print(row)
+        if(f_vote):
+            ticket.upvote_ticket(f_tid)
     elif f_all:
         tick = ticket.get_all_tickets()
         for t in tick:

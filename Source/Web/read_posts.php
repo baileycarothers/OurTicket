@@ -17,7 +17,6 @@
     
     //for loop for each ticket
     $ticket_count = shell_exec("./../ticket_access.py -g 2>&1");
-    echo $ticket_count;
     //$ticket_count = 10;
     for($i = 0; $i < $ticket_count; $i++){
         $fields = array();
@@ -31,10 +30,19 @@
         echo "Ticket Category: ".$fields[3]."<br>";
         echo "Ticket Priority: ".$fields[4]."<br>";
         echo "Ticket Description: ".$fields[5]."<br><br>"; ?>
-        <form action="./../../ticket_access.py" method="post">
-        	<input type="submit" name="upvote" class="button" value="Upvote" />
-        	<input type="submit" name="close" class="button" value="Close" />
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        	<input type="submit" name="upvote" class="button" value="<?php print("upvote,".$fields[0]);?>" />
+        	<input type="submit" name="close" class="button" value="<?php print("close,".$fields[0]);?>" />
         </form> <?php
+    }
+    
+    $upvote = $_POST['upvote'];
+    $upvote_e = explode(",", $upvote);
+    $close = $_POST['close'];
+    $close_e = explode(",", $close);
+    
+    if($upvote){
+        $out = shell_exec("./../ticket_access.py -f ".$upvote_e[2]." 2>&1");
     }
     
 ?>
