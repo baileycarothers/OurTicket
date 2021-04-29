@@ -30,7 +30,7 @@
         echo "Ticket Category: ".$fields[3]."<br>";
         echo "Ticket Priority: ".$fields[4]."<br>";
         echo "Ticket Description: ".$fields[5]."<br><br>"; ?>
-        <form action="voted.php" method="post">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         	<input type="radio" name="upvote" class="button" value="upvote,<?php echo($fields[0]);?>" />
         	<input type="radio" name="upvote" class="button" value="close,<?php echo($fields[0]);?>" />
         	<input type="submit" name="submit" class="button" value="submit" />
