@@ -16,10 +16,10 @@ class TestAccessMethods(unittest.TestCase):
         self.assertEqual(result, (tid, 0, 0, '1', '2', '3'))
     
     def test_remove(self):
-        
+        ticket = db_ticket("OurTicket")
         tid = ticket.get_tid_by_name("1")
-        result = get_ticket_by_tid(tid)
-        self.assertEqual(result, false)
+        result = ticket.get_ticket_by_tid(tid)
+        self.assertEqual(result, False)
     
 if __name__ == '__main__':
     unittest.main()
