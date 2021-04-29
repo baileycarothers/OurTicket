@@ -8,7 +8,9 @@
     $all = shell_exec("./../ticket_access.py -z");
     $all_exp = explode("\n", $all);
     
-    echo $all_exp;
+    foreach($all_exp as $sure){
+        echo $sure;
+    }
     
     
     //for loop for each ticket
