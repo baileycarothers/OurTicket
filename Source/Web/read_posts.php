@@ -6,8 +6,9 @@
     
     #b r u h
     $all = shell_exec("./../ticket_access.py -z");
+    $all_exp = explode("\n", $all);
     
-    echo $all;
+    echo $all_exp;
     
     
     //for loop for each ticket
