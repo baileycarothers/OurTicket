@@ -73,9 +73,7 @@ def main(argv):
          #   print(row)
         #print(f_vote)
         if(f_tid == -1): return
-        print(f_tid)
         if(f_vote):
-            print("testing")
             ticket.upvote_ticket(f_tid)
     elif f_all:
         tick = ticket.get_all_tickets()
@@ -86,8 +84,9 @@ def main(argv):
         print(ticket.get_ticket_count())
     elif f_remove:
         if priv == 0:
-            tid = ticket.get_tid_by_name(ticket_name)
-            ticket.del_ticket(tid)
+            #tid = ticket.get_tid_by_name(ticket_name)
+            print(f_tid)
+            ticket.del_ticket(f_tid)
             print(f"{ticket_name} removed successfully.")
             sys.exit(0)
         else:
