@@ -45,6 +45,7 @@
 
     }elseif($upvote_e[0] == 'close'){
         $out = shell_exec("./../ticket_access.py -r -p 0 -i ".$upvote_e[1]." 2>&1");
+        header("Refresh:0");
     }
     
 ?>
