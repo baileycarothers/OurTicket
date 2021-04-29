@@ -17,7 +17,9 @@ class TestAccessMethods(unittest.TestCase):
     
     def test_remove(self):
         ticket = db_ticket("OurTicket")
+        
         tid = ticket.get_tid_by_name("1")
+        ticket.del_ticket(tid)
         result = ticket.get_ticket_by_tid(tid)
         self.assertEqual(result, False)
     
