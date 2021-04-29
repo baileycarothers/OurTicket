@@ -42,7 +42,8 @@
     $close_e = explode(",", $close);
     
     if($upvote){
-        $out = shell_exec("./../ticket_access.py -f ".$upvote_e[2]." 2>&1");
+        $out = shell_exec("./../ticket_access.py -f ".$upvote_e[2]." -v 2>&1");
+        //print($out);
     }
     
 ?>
