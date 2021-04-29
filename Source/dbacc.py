@@ -143,6 +143,7 @@ class db_ticket(db_table):
             sys.exit(1)
 
     def upvote_ticket(self, tid):
+        print("we here ye?")
         try:
             self.cursor.execute(f"UPDATE OurTicket.{self.table} SET votes = votes + 1 WHERE tid = {tid};")
             self.connection.commit()
