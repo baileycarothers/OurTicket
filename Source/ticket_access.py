@@ -82,7 +82,7 @@ def main(argv):
             print("You do not have the privileges to close tickets.")
             sys.exit(2)
     else:
-        print("Incorrect amount of switches.")
+        print("Incorrect bottom amount of switches.")
         print("ticket_access [SWITCH] [OPTION]")
         sys.exit(2)
 
