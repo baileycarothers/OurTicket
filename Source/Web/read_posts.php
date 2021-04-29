@@ -43,9 +43,11 @@
     print($upvote_e[1]);
     print($upvote_e[0]);
     
-    if($upvote){
+    if($upvote_e[0] == 'upvote'){
         $out = shell_exec("./../ticket_access.py -f ".$upvote_e[1]." -v 2>&1");
-        print($out);
+        echo($out);
+    }elseif($upvote_e[0] == 'close'){
+        echo("pepe");
     }
     
 ?>
