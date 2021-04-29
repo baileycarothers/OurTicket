@@ -7,6 +7,7 @@ from dbacc import db_ticket
 def main(argv):
     f_add = False
     f_find = False
+    f_tid = False
     f_remove = False
     f_vote = False
     ticket_name = ""
@@ -14,7 +15,7 @@ def main(argv):
     ticket_description = ""
     priv = -1
     try:
-        opts, args = getopt.getopt(argv, "afrvn:c:d:p:",["ticket_name=","ticket_category=","ticket_description="])
+        opts, args = getopt.getopt(argv, "afrvn:c:d:p:i:",["ticket_name=","ticket_category=","ticket_description="])
     except getopt.GetoptError:
         print("ticket_access [SWITCH] [OPTION]")
         sys.exit(2)
@@ -23,6 +24,8 @@ def main(argv):
             f_add = True
         elif opt in ("-f", "--find"):
             f_find = True
+        elif opt in ("-i", "--tid"):
+            f_tid = True
         elif opt in ("-r", "--remove"):
             f_remove = True
         elif opt in ("-v", "--vote"):
@@ -57,7 +60,9 @@ def main(argv):
             print("Ticket added successfully!")
             sys.exit(0)
     elif f_find:    # no implementation
-        pass
+        tick = ticket.get_ticket_by_tid(f_tid)
+        for row in tick:
+            print(row)
     elif f_remove:
         if priv == 0:
             tid = ticket.get_tid_by_name(ticket_name)
