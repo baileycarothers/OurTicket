@@ -19,7 +19,7 @@
             </select>
   <br>
   <label for="details">Details 2:</label>
-  Details:  <textarea id="details" rows="5" cols="60" name="content"></textarea><br>
+  Details:  <textarea id="details" rows="5" cols="60" name="details"></textarea><br>
   <br>
  <input type="submit">
 </form>
