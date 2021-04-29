@@ -1,7 +1,7 @@
 <html>
 <body>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+<form method="post" action="submitted.php">
   Title: <input type="text" name="title">
   <br>
   <label for="category">Select a Category:</label>
