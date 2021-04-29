@@ -18,22 +18,23 @@
     //for loop for each ticket
     $ticket_count = 5;
     for($i = 0; $i < $ticket_count; $i++){
-        echo "Ticket No. " . $all_exp[$counter++] . "<br>"; 
-        echo "Ticket Name:".$all_exp[$counter++]."<br>";
-        echo "Ticket Category:".$all_exp[$counter++]."<br>";
-        echo "Ticket Priority:".$all_exp[$counter++]."<br>";
-        echo "Ticket Description:".$all_exp[$counter++]."<br><br>"; ?>
+        $fields = array();
+        for($j = 0; $j < 6; $j++){
+            $fields[$j] = $all_exp[$counter++];
+        }
+        
+        echo "Ticket No. " . $fields[0] . "<br>"; 
+        echo "Ticket Name:".$fields[1]."<br>";
+        echo "Ticket Votes:".$fields[2]."<br>";
+        echo "Ticket Category:".$fields[3]."<br>";
+        echo "Ticket Priority:".$fields[4]."<br>";
+        echo "Ticket Description:".$fields[5]."<br><br>"; ?>
         <form action="./../../ticket_access.py" method="post">
         	<input type="submit" name="upvote" class="button" value="Upvote" />
         	<input type="submit" name="close" class="button" value="Close" />
         </form> <?php
     }
     
-    echo "Ticket No."; 
-    echo "Ticket Name:";
-    echo "Ticket Category:";
-    echo "Ticket Priority:";
-    echo "Ticket Description:";
 ?>
 </body>
 </html>
