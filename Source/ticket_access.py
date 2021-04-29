@@ -18,7 +18,7 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv, "aefrvn:c:d:p:i:",["ticket_name=","ticket_category=","ticket_description="])
     except getopt.GetoptError:
-        print("ticket_access [SWITCH] [OPTION]")
+        print("ticket_access top [SWITCH] [OPTION]")
         sys.exit(2)
     for opt, arg in opts:
         if opt in ("-a", "--add"):
