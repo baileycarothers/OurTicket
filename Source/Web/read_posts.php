@@ -23,12 +23,12 @@
             $fields[$j] = $all_exp[$counter++];
         }
         
-        echo "Ticket No. " . $fields[0] . "<br>"; 
-        echo "Ticket Name:".$fields[1]."<br>";
-        echo "Ticket Votes:".$fields[2]."<br>";
-        echo "Ticket Category:".$fields[3]."<br>";
-        echo "Ticket Priority:".$fields[4]."<br>";
-        echo "Ticket Description:".$fields[5]."<br><br>"; ?>
+        echo "Ticket No. &nbsp" . $fields[0] . "<br>"; 
+        echo "Ticket Name: &nbsp".$fields[1]."<br>";
+        echo "Ticket Votes: &nbsp".$fields[2]."<br>";
+        echo "Ticket Category: &nbsp".$fields[3]."<br>";
+        echo "Ticket Priority: &nbsp".$fields[4]."<br>";
+        echo "Ticket Description: &nbsp".$fields[5]."<br><br>"; ?>
         <form action="./../../ticket_access.py" method="post">
         	<input type="submit" name="upvote" class="button" value="Upvote" />
         	<input type="submit" name="close" class="button" value="Close" />
