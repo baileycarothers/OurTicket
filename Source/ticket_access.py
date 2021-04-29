@@ -72,6 +72,7 @@ def main(argv):
         #for row in tick:
          #   print(row)
         if(f_vote):
+            print("testing")
             ticket.upvote_ticket(f_tid)
     elif f_all:
         tick = ticket.get_all_tickets()
