@@ -4,12 +4,13 @@
     $close = $_POST['close'];
     $close_e = explode(",", $close);
     
-    print($upvote_e[1]);
-    print($upvote_e[0]);
-    print($upvote);
+    echo($upvote_e[1]);
+    echo($upvote_e[0]);
+    echo($upvote);
+    print("doggi");
     
     if($upvote){
         $out = shell_exec("./../ticket_access.py -f ".$upvote_e[1]." -v 2>&1");
-        print($out);
+        echo($out);
     }
 ?>
